@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Clock</title>
+  <style>
+        body {
+      background-color: #00FF00; /* 纯绿色的背景 */
+      color: #ffffff; /* 白色字体 */
+    }
+    @font-face {
+      font-family: "CustomFont";
+      src: url('PangMenZhengDaoBiaoTiTiMianFeiBan-2.ttf'); /* 替换为自定义字体文件的路径 */
+    }
+
+    #clock {
+      font-family: "CustomFont", Arial, sans-serif; /* 使用自定义字体，如果不可用则使用 Arial 字体 */
+    }
+  </style>
+  <script>
+    function updateClock() {
+      var now = new Date();
+      var h = now.getHours();
+      var m = now.getMinutes();
+      var s = now.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+      var t = setTimeout(updateClock, 500);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+  </script>
+</head>
+<body onload="updateClock()">
+  <h1 id="clock"></h1>
+</body>
+</html>
